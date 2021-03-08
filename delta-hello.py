@@ -45,5 +45,8 @@ if __name__ == "__main__":
 
     data = spark.range(0, 5)
     data.write.format("delta").save("file:///tmp/delta-table")
+
+
+    time.sleep(10000)
     
     spark.stop()
