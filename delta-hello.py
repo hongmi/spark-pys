@@ -21,7 +21,7 @@ from operator import add
 
 from pyspark.sql import SparkSession
 
-from delta.tables import *
+
 
 
 if __name__ == "__main__":
@@ -36,6 +36,9 @@ if __name__ == "__main__":
         .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
         .getOrCreate()
 
+
+    from delta import *
+    
     partitions = int(sys.argv[1]) if len(sys.argv) > 1 else 2
     n = 100000 * partitions
 
