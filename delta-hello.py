@@ -34,6 +34,7 @@ if __name__ == "__main__":
         .getOrCreate()
 
 
+    time.sleep(100)
 
     from delta import *
     
