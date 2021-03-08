@@ -28,7 +28,7 @@ if __name__ == "__main__":
     spark = SparkSession\
         .builder\
         .appName("PythonPi")\
-        .master("local[*]")
+        .master("local[*]")\
         .getOrCreate()
 
     from delta.tables import *
