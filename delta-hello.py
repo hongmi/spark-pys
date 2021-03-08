@@ -18,7 +18,7 @@
 import sys
 from random import random
 from operator import add
-
+import time
 from pyspark.sql import SparkSession
 
 
@@ -37,6 +37,9 @@ if __name__ == "__main__":
         .getOrCreate()
 
 
+
+    time.sleep(1000)
+    
     from delta import *
     
     partitions = int(sys.argv[1]) if len(sys.argv) > 1 else 2
