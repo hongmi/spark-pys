@@ -28,13 +28,10 @@ if __name__ == "__main__":
     spark = SparkSession\
         .builder\
         .appName("PythonPi")\
-        .config("spark.jars.packages", "io.delta:delta-core_2.12:0.8.0") \
+        .config("spark.jars.packages", "io.delta:delta-core_2.12:0.6.1") \
         .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
         .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
         .getOrCreate()
-
-
-    time.sleep(100)
 
     from delta import *
     
@@ -50,6 +47,6 @@ if __name__ == "__main__":
     print("Pi is roughly %f" % (4.0 * count / n))
 
     data = spark.range(0, 5)
-    data.write.format("delta").save("/tmp/delta-table")
+    data.write.format("delta").save("file:///tmp/delta-table")
     
     spark.stop()
