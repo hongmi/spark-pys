@@ -21,9 +21,6 @@ from operator import add
 import time
 from pyspark.sql import SparkSession
 
-
-
-
 if __name__ == "__main__":
     """
         Usage: pi [partitions]
@@ -38,8 +35,6 @@ if __name__ == "__main__":
 
 
 
-    time.sleep(1000)
-    
     from delta import *
     
     partitions = int(sys.argv[1]) if len(sys.argv) > 1 else 2
