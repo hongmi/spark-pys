@@ -21,6 +21,8 @@ from operator import add
 
 from pyspark.sql import SparkSession
 
+from delta.tables import *
+
 
 if __name__ == "__main__":
     """
@@ -42,4 +44,7 @@ if __name__ == "__main__":
     count = spark.sparkContext.parallelize(range(1, n + 1), partitions).map(f).reduce(add)
     print("Pi is roughly %f" % (4.0 * count / n))
 
+    data = spark.range(0, 5)
+    data.write.format("delta").save("/tmp/delta-table")
+    
     spark.stop()
